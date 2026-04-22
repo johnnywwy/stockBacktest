@@ -69,6 +69,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import * as echarts from 'echarts';
+const baseUrl = import.meta.env.BASE_URL;
 
 const props = defineProps({
     symbol: { type: String, required: true }
@@ -299,7 +300,7 @@ const loadData = async () => {
             folderName += '_US';
         }
 
-        const res = await fetch(`/stockData/${folderName}/${folderName}.json`);
+        const res = await fetch(`${baseUrl}/stockData/${folderName}/${folderName}.json`);
         if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
 
         const rawData = await res.json();
