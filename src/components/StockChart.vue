@@ -299,8 +299,9 @@ const loadData = async () => {
         if (!folderName.includes('_')) {
             folderName += '_US';
         }
-
-        const res = await fetch(`${baseUrl}/stockData/${folderName}/${folderName}.json`);
+        console.log('baseUrl', baseUrl);
+        
+        const res = await fetch(`${baseUrl}stockData/${folderName}/${folderName}.json`);
         if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
 
         const rawData = await res.json();
